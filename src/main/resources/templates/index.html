@@ -27,11 +27,11 @@
                 </div>
                 <button type="submit" class="btn btn-default">搜索</button>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/login/oauth/authorize?client_id=747a6bd7536c542052c2&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">我 <span class="caret"></span></a>
+            <ul class="nav navbar-nav navbar-right" th:switch="${session.githubUser!=null}">
+                <li th:case="false"><a href="https://github.com/login/oauth/authorize?client_id=747a6bd7536c542052c2&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
+                <li th:case="true" class="dropdown">
+                    <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" th:text="${session.githubUser.getName()}"> <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">消息中心</a></li>
                         <li><a href="#">个人资料</a></li>

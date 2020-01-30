@@ -7,3 +7,14 @@ github:
     http://localhost:8080/callback
 
 
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/community?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 971003
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
