@@ -1,0 +1,9 @@
+github:
+  client_id:
+    747a6bd7536c542052c2
+  client_secret:
+    d11bb535c330666f7c8f26afab9a3ce8a895b86d
+  redirect_uri:
+    http://localhost:8080/callback
+
+
