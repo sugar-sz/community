@@ -2,16 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="04886b9d-b4b7-49e3-969c-f2e5beba95fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/PublishController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/publish.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/publish.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/dto/QuestionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/mapper/QuestionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/model/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/service/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/AuthorizeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/AuthorizeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/PublishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/controller/PublishController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/dto/AccessTokenDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/dto/AccessTokenDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/dto/GithubUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/dto/GithubUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/lyj/community/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lyj/community/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/publish.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/publish.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/publish.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/publish.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +52,20 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="community@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="question: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="community@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -52,9 +73,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -133,7 +154,12 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:community@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@69cdc5a2" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@29d3827b" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:community@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@5bc86170" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -153,7 +179,8 @@
       <option name="presentableId" value="Default" />
       <updated>1580356418886</updated>
       <workItem from="1580356423640" duration="21691000" />
-      <workItem from="1580438618555" duration="7182000" />
+      <workItem from="1580438618555" duration="16642000" />
+      <workItem from="1580461993527" duration="4640000" />
     </task>
     <servers />
   </component>
@@ -179,61 +206,61 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1580446128680" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1580442214174">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1580452063891">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1580442214174" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1580452063891" />
     <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580446174677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="158" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1580446174677" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.0.bottom" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
+    <state width="1493" height="219" key="GridCell.Tab.0.center" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
+    <state width="1493" height="219" key="GridCell.Tab.0.left" timestamp="1580465860285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1580465860285" />
+    <state width="1493" height="219" key="GridCell.Tab.0.right" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
-    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1580446383791">
+    <state width="1493" height="219" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
+    <state width="1493" height="219" key="GridCell.Tab.1.bottom" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580446383791" />
-    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
+    <state width="1493" height="219" key="GridCell.Tab.1.center" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
-    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
+    <state width="1493" height="219" key="GridCell.Tab.1.left" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
-    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1580446383790">
+    <state width="1493" height="219" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
+    <state width="1493" height="219" key="GridCell.Tab.1.right" timestamp="1580465860286">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1580446383790" />
+    <state width="1493" height="219" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1580465860286" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1580441368070">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1580441368070" />
-    <state x="603" y="51" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1580442118179">
+    <state x="603" y="51" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1580452476091">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="603" y="51" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1580442118179" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1580438654347">
+    <state x="603" y="51" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1580452476091" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1580462018351">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1580438654347" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1580446221514">
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1580462018351" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1580452164147">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580446221514" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580452164147" />
   </component>
 </project>
