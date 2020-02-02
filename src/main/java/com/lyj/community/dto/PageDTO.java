@@ -44,8 +44,6 @@ public class PageDTO {
         }
 
 
-
-
         if (pages.contains(1)) {
             showFirstPage = false;
         } else {

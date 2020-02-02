@@ -1,11 +1,8 @@
 package com.lyj.community.mapper;
 
+import com.lyj.community.dto.QuestionDTO;
 import com.lyj.community.model.Question;
-import com.lyj.community.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,4 +26,11 @@ public interface QuestionMapper {
 
     @Select("select count(1) from question where creator=#{id}")
     Integer countByUserId(Integer id);
+
+    @Select("select * from question where id=#{id}")
+    Question findById(Integer id);
+
+    @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified}," +
+            "tag=#{tag} where id=#{id}")
+    void updateQuestion(Question question);
 }

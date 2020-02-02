@@ -25,7 +25,6 @@ public class QuestionService {
     public PageDTO findAll(Integer page, Integer size) {
         PageDTO pageDTO = new PageDTO();
         Integer totalPage;
-
         Integer totalCount = questionMapper.count();
 
         if (totalCount % size == 0) {
@@ -83,5 +82,31 @@ public class QuestionService {
         }
         pageDTO.setQuestions(questionDTOS);
         return pageDTO;
+    }
+
+    public QuestionDTO findById(Integer id){
+        QuestionDTO questionDTO = new QuestionDTO();
+        Question question = questionMapper.findById(id);
+        BeanUtils.copyProperties(question,questionDTO);
+        User user = userMapper.findById(question.getCreator());
+        questionDTO.setUser(user);
+        return questionDTO;
+    }
+
+    public Question findQuestionById(Integer id){
+        return questionMapper.findById(id);
+    }
+
+    public void createOrUpdate(Question question) {
+        if(question.getId() == null){
+            question.setGmtCreate(System.currentTimeMillis());
+            question.setGmtModified(question.getGmtCreate());
+            questionMapper.createQuestion(question);
+        }else{
+            question.setGmtModified(System.currentTimeMillis());
+            questionMapper.updateQuestion(question);
+        }
+
+
     }
 }
