@@ -15,8 +15,16 @@ spring:
     password: 971003
   mvc:
     static-path-pattern=/static/**:
+  thymeleaf:
+    cache: false
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.lyj.community.model
+
+
+
+
 
 

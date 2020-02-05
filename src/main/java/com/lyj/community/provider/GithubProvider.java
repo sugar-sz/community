@@ -1,7 +1,6 @@
 package com.lyj.community.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.lyj.community.dto.AccessTokenDTO;
 import com.lyj.community.dto.GithubUser;
 import okhttp3.*;
@@ -12,7 +11,7 @@ import java.io.IOException;
 @Component
 public class GithubProvider {
 
-    public String getAccessToken(AccessTokenDTO accessTokenDTO){
+    public String getAccessToken(AccessTokenDTO accessTokenDTO) {
         MediaType mediaType
                 = MediaType.get("application/json; charset=utf-8");
         String url = "https://github.com/login/oauth/access_token";
@@ -33,7 +32,7 @@ public class GithubProvider {
         return null;
     }
 
-    public GithubUser getUser(String accessToken){
+    public GithubUser getUser(String accessToken) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url("https://api.github.com/user?access_token=" + accessToken)

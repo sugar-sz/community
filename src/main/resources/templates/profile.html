@@ -26,10 +26,12 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.title}"></h4>
+                    <h4 class="media-heading" >
+                        <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}"></a>
+                    </h4>
                     <span class="text-desc" th:text="${question.commentCount}+'个回复 •'"/>
                     <span class="text-desc" th:text="${question.viewCount}+'次浏览 •'"/>
-                    <span class="text-desc" th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm:ss')}"/>
+                    <span class="text-desc" th:text="${#dates.format(question.gmtModified,'yyyy-MM-dd HH:mm:ss')}"/>
                 </div>
             </div>
 

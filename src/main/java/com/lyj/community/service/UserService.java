@@ -2,8 +2,11 @@ package com.lyj.community.service;
 
 import com.lyj.community.mapper.UserMapper;
 import com.lyj.community.model.User;
+import com.lyj.community.model.UserExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -11,19 +14,25 @@ public class UserService {
     private UserMapper userMapper;
 
     public void createOrUpdate(User user) {
-        User dbUser = userMapper.findByAccountId(user.getAccountId());
-
-        if (null != dbUser) {
-            dbUser.setGmtModified(System.currentTimeMillis());
-            dbUser.setAvatarUrl(user.getAvatarUrl());
-            dbUser.setToken(user.getToken());
-            dbUser.setName(user.getName());
-            dbUser.setBio(user.getBio());
-            userMapper.updateUser(user);
-        }else{
+        UserExample userExample = new UserExample();
+        userExample.createCriteria()
+                .andAccountIdEqualTo(user.getAccountId());
+        List<User> users = userMapper.selectByExample(userExample);
+        User dbUser = users.get(0);
+        if (users.size() != 0) {
+            User updateUser = new User();
+            updateUser.setGmtModified(System.currentTimeMillis());
+            updateUser.setAvatarUrl(user.getAvatarUrl());
+            updateUser.setToken(user.getToken());
+            updateUser.setName(user.getName());
+            updateUser.setBio(user.getBio());
+            UserExample example = new UserExample();
+            example.createCriteria().andIdEqualTo(dbUser.getId());
+            userMapper.updateByExampleSelective(updateUser,example);
+        } else {
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
-            userMapper.insertUser(user);
+            userMapper.insert(user);
         }
     }
 }
