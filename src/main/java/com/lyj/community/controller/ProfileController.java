@@ -2,6 +2,7 @@ package com.lyj.community.controller;
 
 import com.lyj.community.dto.PageDTO;
 import com.lyj.community.model.User;
+import com.lyj.community.service.NotificationService;
 import com.lyj.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,13 @@ public class ProfileController {
     @Autowired
     private QuestionService questionService;
 
+    @Autowired
+    private NotificationService notificationService;
 
     @GetMapping("/profile/{action}")
     public String profile(@PathVariable("action") String action,
                           @RequestParam(name = "page", defaultValue = "1") Integer page,
-                          @RequestParam(name = "size", defaultValue = "5") Integer size,
+                          @RequestParam(name = "size", defaultValue = "6") Integer size,
                           HttpServletRequest request,
                           Model model) {
 
@@ -33,12 +36,14 @@ public class ProfileController {
         if ("questions".equals(action)) {
             model.addAttribute("section", "questions");
             model.addAttribute("sectionName", "我的提问");
+            PageDTO pages = questionService.list(user.getId(), page, size);
+            model.addAttribute("pages", pages);
         } else if ("replies".equals(action)) {
+            PageDTO paginationDTO = notificationService.list(user.getId(), page, size);
             model.addAttribute("section", "replies");
+            model.addAttribute("pages", paginationDTO);
             model.addAttribute("sectionName", "最新回复");
         }
-        PageDTO pages = questionService.findAll(user.getId(), page, size);
-        model.addAttribute("pages", pages);
         return "profile";
     }
 }

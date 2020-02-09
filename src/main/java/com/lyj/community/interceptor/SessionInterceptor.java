@@ -3,6 +3,7 @@ package com.lyj.community.interceptor;
 import com.lyj.community.mapper.UserMapper;
 import com.lyj.community.model.User;
 import com.lyj.community.model.UserExample;
+import com.lyj.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Component
@@ -18,6 +20,9 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private NotificationService notificationService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -31,8 +36,10 @@ public class SessionInterceptor implements HandlerInterceptor {
                             .andTokenEqualTo(token);
                     List<User> users = userMapper.selectByExample(userExample);
                     if (users.size() != 0) {
-                        request.getSession().setAttribute("user", users.get(0));
-                        break;
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user", users.get(0));
+                        Long unreadCount = notificationService.unreadCount(Long.parseLong(String.valueOf(users.get(0).getId())));
+                        session.setAttribute("unreadCount", unreadCount);
                     }
                 }
             }

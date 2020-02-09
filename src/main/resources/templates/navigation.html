@@ -17,18 +17,22 @@
 
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-left">
+                <form class="navbar-form navbar-left" action="/" method="get">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="搜索问题">
+                        <input type="text" name="search" class="form-control" placeholder="搜索问题">
                     </div>
                     <button type="submit" class="btn btn-default">搜索</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li th:if="${session.user!=null}"><a href="/publish">发布问题</a></li>
-                    <li th:if="${session.user==null}"><a href="https://github.com/login/oauth/authorize?client_id=747a6bd7536c542052c2&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a></li>
+                    <li><a href="/profile/replies">通知 <span class="badge" th:if="${session.unreadCount != 0}"
+                                                            th:text="${session.unreadCount}"></span></a></li>
+                    <li th:if="${session.user==null}"><a
+                            href="https://github.com/login/oauth/authorize?client_id=747a6bd7536c542052c2&redirect_uri=http://localhost:8080/callback&scope=user&state=1">登录</a>
+                    </li>
                     <li th:if="${session.user!=null}" class="dropdown">
-                        <a  href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                            aria-expanded="false" >
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">
                             <span th:text="${session.user.getName()}"></span>
                             <span class="caret"></span>
                         </a>

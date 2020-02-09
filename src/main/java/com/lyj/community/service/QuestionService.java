@@ -1,21 +1,23 @@
 package com.lyj.community.service;
 
-import com.lyj.community.dto.CommentDTO;
 import com.lyj.community.dto.PageDTO;
 import com.lyj.community.dto.QuestionDTO;
-import com.lyj.community.enums.CommentTypeEnum;
+import com.lyj.community.dto.QuestionQueryDTO;
 import com.lyj.community.exception.CustomizeErrorCode;
 import com.lyj.community.exception.CustomizeException;
 import com.lyj.community.mapper.CommentMapper;
 import com.lyj.community.mapper.QuestionMapper;
 import com.lyj.community.mapper.UserMapper;
 import com.lyj.community.model.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
@@ -26,13 +28,25 @@ public class QuestionService {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private CommentMapper commentMapper;
+    public PageDTO list(String search,Integer page, Integer size) {
 
-    public PageDTO findAll(Integer page, Integer size) {
-        PageDTO pageDTO = new PageDTO();
+        if (StringUtils.isNotBlank(search)) {
+            String[] tags = StringUtils.split(search, " ");
+            search = Arrays
+                    .stream(tags)
+                    .filter(StringUtils::isNotBlank)
+                    .map(t -> t.replace("+", "").replace("*", "").replace("?", ""))
+                    .filter(StringUtils::isNotBlank)
+                    .collect(Collectors.joining("|"));
+        }
+
+        PageDTO<QuestionDTO> pageDTO = new PageDTO();
         Integer totalPage;
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
+
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+
+        Integer totalCount = questionMapper.countBySearch(questionQueryDTO);
 
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -44,11 +58,10 @@ public class QuestionService {
         if (page > totalPage) page = totalPage;
 
         pageDTO.setPaginaton(totalPage, page);
-        Integer offset = size * (page - 1);
-        QuestionExample example = new QuestionExample();
-        example.setOffset(offset);
-        example.setSize(size);
-        List<Question> questions = questionMapper.selectByExample(example);
+        Integer offset = page < 1 ? 0 : size * (page - 1);
+        questionQueryDTO.setPage(offset);
+        questionQueryDTO.setSize(size);
+        List<Question> questions = questionMapper.selectBySearch(questionQueryDTO);
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
         for (Question question : questions) {
@@ -61,14 +74,14 @@ public class QuestionService {
             questionDTO.setUser(users.get(0));
             questionDTOS.add(questionDTO);
         }
-        pageDTO.setQuestions(questionDTOS);
+        pageDTO.setData(questionDTOS);
 
         return pageDTO;
     }
 
-    public PageDTO findAll(Integer id, Integer page, Integer size) {
+    public PageDTO list(Integer id, Integer page, Integer size) {
 
-        PageDTO pageDTO = new PageDTO();
+        PageDTO<QuestionDTO> pageDTO = new PageDTO();
         Integer totalPage;
 
         QuestionExample example = new QuestionExample();
@@ -90,6 +103,7 @@ public class QuestionService {
         example2.createCriteria().andCreatorEqualTo(id);
         example2.setOffset(offset);
         example2.setSize(size);
+        example2.setOrderByClause("gmt_create desc");
         List<Question> questions = questionMapper.selectByExample(example2);
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
@@ -103,7 +117,7 @@ public class QuestionService {
             questionDTO.setUser(users.get(0));
             questionDTOS.add(questionDTO);
         }
-        pageDTO.setQuestions(questionDTOS);
+        pageDTO.setData(questionDTOS);
         return pageDTO;
     }
 
@@ -151,7 +165,31 @@ public class QuestionService {
         question.setViewCount(question.getViewCount() + 1);
         QuestionExample example = new QuestionExample();
         example.createCriteria().andIdEqualTo(id.intValue());
-        questionMapper.updateByExampleSelective(question,example);
+        questionMapper.updateByExampleSelective(question, example);
+    }
+
+    public List<QuestionDTO> selectTags(QuestionDTO queryDTO) {
+        if (StringUtils.isBlank(queryDTO.getTag())) {
+            return new ArrayList<>();
+        }
+
+        String[] tags = StringUtils.split(queryDTO.getTag(), ',');
+        String regexpTag = Arrays
+                .stream(tags)
+                .filter(StringUtils::isNotBlank)
+                .map(t -> t.replace("+", "").replace("*", "").replace("?", ""))
+                .filter(StringUtils::isNotBlank)
+                .collect(Collectors.joining("|"));
+        Question question = new Question();
+        question.setId(queryDTO.getId());
+        question.setTag(regexpTag);
+        List<Question> questions = questionMapper.selectTags(question);
+        List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
+            QuestionDTO questionDTO = new QuestionDTO();
+            BeanUtils.copyProperties(q, questionDTO);
+            return questionDTO;
+        }).collect(Collectors.toList());
+        return questionDTOS;
     }
 
 }

@@ -18,8 +18,8 @@ public class UserService {
         userExample.createCriteria()
                 .andAccountIdEqualTo(user.getAccountId());
         List<User> users = userMapper.selectByExample(userExample);
-        User dbUser = users.get(0);
         if (users.size() != 0) {
+            User dbUser = users.get(0);
             User updateUser = new User();
             updateUser.setGmtModified(System.currentTimeMillis());
             updateUser.setAvatarUrl(user.getAvatarUrl());
@@ -31,7 +31,7 @@ public class UserService {
             userMapper.updateByExampleSelective(updateUser,example);
         } else {
             user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
+            user.setGmtModified(System.currentTimeMillis());
             userMapper.insert(user);
         }
     }

@@ -40,15 +40,15 @@ public class CommentController {
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModified(System.currentTimeMillis());
         comment.setLikeCount(0L);
+        comment.setCommentcount(0);
         comment.setCommentor(user.getId());
-        commentService.insert(comment);
+        commentService.insert(comment,user);
         return ResultDTO.okOf();
     }
 
     @GetMapping("/comment/{id}")
     public ResultDTO comments(@PathVariable(name = "id") Long id){
         List<CommentDTO> commentDTOS = commentService.listByTargetId(id, CommentTypeEnum.COMMENT);
-
         return ResultDTO.okOf(commentDTOS);
     }
 }
