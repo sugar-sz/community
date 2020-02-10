@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="04886b9d-b4b7-49e3-969c-f2e5beba95fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/QuestionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/QuestionMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +182,12 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:community@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -218,7 +224,7 @@
       <workItem from="1581077963363" duration="4931000" />
       <workItem from="1581126423959" duration="10670000" />
       <workItem from="1581227788702" duration="12730000" />
-      <workItem from="1581320116147" duration="631000" />
+      <workItem from="1581320116147" duration="2085000" />
     </task>
     <servers />
   </component>
